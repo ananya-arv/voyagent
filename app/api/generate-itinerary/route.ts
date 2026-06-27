@@ -6,7 +6,9 @@ import { insertTripWithEvents, upsertUser } from "@/lib/supabase/queries";
 import { captureError } from "@/lib/observability";
 
 export const runtime = "nodejs";
-export const maxDuration = 120; // itinerary generation can take a while
+// Itinerary generation streams a large structured response from Claude, which
+// can run a couple of minutes. 300s is Vercel's current max function duration.
+export const maxDuration = 300;
 
 export async function POST(request: Request) {
   const user = await getCurrentUser();

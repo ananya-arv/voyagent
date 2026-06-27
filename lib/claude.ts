@@ -56,13 +56,17 @@ export async function generateItinerary(
   let rawResponse: unknown;
 
   try {
-    const message = await client.messages.parse({
+    // Stream the response. At max_tokens this high the full generation can take
+    // a couple of minutes; a non-streaming request risks hitting platform/SDK
+    // request timeouts (504), so we stream and assemble the final message.
+    const stream = client.messages.stream({
       model: ITINERARY_MODEL,
       max_tokens: 16000,
       system: SYSTEM_PROMPT,
       messages: [{ role: "user", content: buildUserMessage(intake) }],
       output_config: { format: zodOutputFormat(itinerarySchema) },
     });
+    const message = await stream.finalMessage();
     rawResponse = message;
 
     if (message.stop_reason === "refusal") {
@@ -71,14 +75,22 @@ export async function generateItinerary(
       );
     }
 
-    const parsed = message.parsed_output;
-    if (!parsed) {
+    // Structured outputs emit the schema-shaped JSON as text; assemble + validate.
+    const jsonText = message.content
+      .filter((b): b is Anthropic.TextBlock => b.type === "text")
+      .map((b) => b.text)
+      .join("");
+
+    let parsed: GeneratedItinerary;
+    try {
+      parsed = itinerarySchema.parse(JSON.parse(jsonText)) as GeneratedItinerary;
+    } catch {
       throw new ItineraryGenerationError(
         "The model response did not match the expected itinerary schema.",
       );
     }
 
-    return parsed as GeneratedItinerary;
+    return parsed;
   } catch (err) {
     await captureError(err, { intake, rawResponse });
     if (err instanceof ItineraryGenerationError) throw err;
