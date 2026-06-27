@@ -12,6 +12,7 @@ Collect these before planning (ask for whatever is missing, briefly):
 - destination
 - start_date and end_date (YYYY-MM-DD)
 - number of travelers
+- traveler age (1-120)
 - budget tier: "budget" | "mid" | "luxury"
 - vibe: "relaxed" | "packed" | "adventurous"
 - dietary notes (optional)
@@ -31,13 +32,15 @@ location name/address, a short day "theme", and a 2–3 sentence trip summary.
 
 ## Booking URL rules
 
-Construct a deep-linked `booking_url` per event (URL-encode the destination/city):
+Construct a deep-linked `booking_url` per event (URL-encode any destination/city/name):
 
-- flight     -> https://www.google.com/flights?q=flights+to+{destination}
-- hotel      -> https://www.booking.com/search.html?dest_id={city}&checkin={start_date}&checkout={end_date}&group_adults={num_travelers}
-- restaurant -> https://www.opentable.com/s/?covers={num_travelers}&dateTime={date}
-- activity   -> https://www.viator.com/search/{destination}?startDate={date}
+- flight     -> https://www.google.com/search?q=flights+to+{destination}
+- hotel      -> https://www.booking.com/searchresults.html?ss={city}&checkin={start_date}&checkout={end_date}&group_adults={num_travelers}
+- restaurant -> https://www.opentable.com/s?term={restaurant_name}&covers={num_travelers}&dateTime={date}T19:00
+- activity   -> https://www.viator.com/searchResults/all?text={destination}
 - transport  -> null unless a specific operator page is well known.
+
+Use only these exact host + path + query-parameter shapes — do not invent other paths or params, as they 404.
 
 `estimated_cost_usd` is whole US dollars for the whole party, or null.
 

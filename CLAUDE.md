@@ -32,7 +32,7 @@ This was scaffolded with `create-next-app@latest`, so it runs **Next.js 16 / Rea
 Two AI entry points share one persistence layer and one prompt source:
 
 1. **Form path (spec-canonical):** `/plan` → `POST /api/generate-itinerary` → `lib/claude.ts` `generateItinerary()`. Uses the **direct Anthropic SDK** (`claude-sonnet-4-6`) with **structured outputs** (`messages.parse` + `zodOutputFormat`) — output validity is guaranteed by schema, not by "return only JSON" prompting. On refusal/parse failure it throws `ItineraryGenerationError` and captures the raw response to Sentry.
-2. **Chat path (Eve agent):** `/chat` → `useEveAgent` (`eve/react`) → the agent under `agent/`. The agent generates via **Vercel AI Gateway** (`anthropic/claude-sonnet-4.6` — note the dotted id, distinct from the direct SDK's `claude-sonnet-4-6`) and persists by calling its strict-zod `save_itinerary` tool.
+2. **Chat path (Eve agent):** `/chat` → `useEveAgent` (`eve/react`) → the agent under `agent/`. The agent generates via the **direct Anthropic provider** (`@ai-sdk/anthropic`'s `anthropic("claude-sonnet-4-6")` in `agent/agent.ts`, reading `ANTHROPIC_API_KEY`) and persists by calling its strict-zod `save_itinerary` tool. (It previously routed through the Vercel AI Gateway with the dotted id `anthropic/claude-sonnet-4.6`; to switch back, set `model` to that string and provide `AI_GATEWAY_API_KEY`.)
 
 Both write through **`lib/supabase/queries.ts`** — the single data-access layer; never inline Supabase queries in routes or tools. Both draw prompt material from **`lib/prompts/itinerary.ts`** (system prompt + booking-URL rules); keep `agent/instructions.md` in sync with it.
 

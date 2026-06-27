@@ -1,0 +1,28 @@
+{
+  "eventType": "run_created",
+  "specVersion": 5,
+  "eventData": {
+    "deploymentId": "dpl_local@bundled",
+    "workflowName": "workflow//eve//workflowEntry",
+    "input": {
+      "__type": "Uint8Array",
+      "data": "ZGV2bFtbMV0seyJpbnB1dCI6Miwic2VyaWFsaXplZENvbnRleHQiOjZ9LHsibWVzc2FnZSI6MywiY29udGV4dCI6NCwib3V0cHV0U2NoZW1hIjotMX0sIkkgd2FudCB0byBnbyB0byBrZW55YSBmb3IgNCBkYXlzIHdpdGggMSBvdGhlciB0cmF2ZWxlciIsWzVdLCJDbGllbnQgY29udGV4dDpcbntcInVzZXJfaWRcIjpcImF1dGgwfDZhNDAwYjg5MjU1YWI0MjRkZTRiNGQ1OVwiLFwidXNlcl9lbWFpbFwiOlwiYW5ueWFydmlAZ21haWwuY29tXCJ9Iix7ImV2ZS5idW5kbGUiOjcsImV2ZS5jaGFubmVsIjoxMywiZXZlLmNoYW5uZWxJbnN0cnVtZW50YXRpb24iOjE2LCJldmUuY29udGludWF0aW9uVG9rZW4iOjE5LCJldmUubW9kZSI6MjAsImV2ZS5hdXRoIjoyMSwiZXZlLmluaXRpYXRvckF1dGgiOjIxLCJldmUuY2FwYWJpbGl0aWVzIjoyNH0seyJub2RlSWQiOi0xLCJzb3VyY2UiOjh9LHsiYXBwUm9vdCI6OSwia2luZCI6MTAsIm1vZHVsZU1hcExvYWRlclBhdGgiOjExLCJzYW5kYm94QXBwUm9vdCI6MTJ9LCIvVXNlcnMvQU5BTlkvdm95YWdlbnQvLmV2ZS9kZXYtcnVudGltZS9zbmFwc2hvdHMvbXF3cjN2ajQtNGY2ZDBjZDYtZDBkYS00MmM2LTk5MzUtM2Y1MmYxMDJlNzViL3NvdXJjZSIsImRpc2siLCIvVXNlcnMvQU5BTlkvdm95YWdlbnQvbm9kZV9tb2R1bGVzL2V2ZS9kaXN0L3NyYy9pbnRlcm5hbC9hdXRob3JlZC1tb2R1bGUtbWFwLWxvYWRlci5qcyIsIi9Vc2Vycy9BTkFOWS92b3lhZ2VudCIseyJraW5kIjoxNCwic3RhdGUiOjE1fSwiaHR0cCIse30seyJraW5kIjoxNywibWV0YWRhdGEiOjE4fSwiY2hhbm5lbDpldmUiLHt9LCJldmU6ZXZlOmMzMjcxMzkxLWJjMTAtNDQ0ZS05ZmYyLWM1ZmFmNjE4NGFmNSIsImNvbnZlcnNhdGlvbiIseyJhdHRyaWJ1dGVzIjoyMiwiYXV0aGVudGljYXRvciI6MjMsInByaW5jaXBhbElkIjoyMywicHJpbmNpcGFsVHlwZSI6MjN9LHt9LCJsb2NhbC1kZXYiLHsicmVxdWVzdElucHV0IjoyNX0sdHJ1ZV0="
+    },
+    "executionContext": {
+      "traceCarrier": {},
+      "workflowCoreVersion": "5.0.0-beta.24",
+      "features": {
+        "encryption": false
+      }
+    },
+    "attributes": {
+      "$eve.type": "session",
+      "$eve.trigger": "http",
+      "$eve.title": "I want to go to kenya for 4 days with 1 other traveler"
+    },
+    "allowReservedAttributes": true
+  },
+  "runId": "wrun_01KW58VJQRZMD9YZT9XKJYMFCM",
+  "eventId": "evnt_01KW58VJQX2DK352BX3R0C0DGZ",
+  "createdAt": "2026-06-27T19:28:12.541Z"
+}

@@ -1,0 +1,37 @@
+{
+  "runId": "wrun_01KW58VXT0688RZF0YH0ADXTH6",
+  "deploymentId": "dpl_local@bundled",
+  "workflowName": "workflow//eve//turnWorkflow",
+  "specVersion": 5,
+  "executionContext": {
+    "traceCarrier": {},
+    "workflowCoreVersion": "5.0.0-beta.24",
+    "features": {
+      "encryption": false
+    }
+  },
+  "input": {
+    "__type": "Uint8Array",
+    "data": "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"
+  },
+  "createdAt": "2026-06-27T19:28:23.874Z",
+  "startedAt": "2026-06-27T19:28:23.874Z",
+  "status": "completed",
+  "output": {
+    "__type": "Uint8Array",
+    "data": "ZGV2bC0x"
+  },
+  "completedAt": "2026-06-27T19:28:26.583Z",
+  "updatedAt": "2026-06-27T19:28:26.583Z",
+  "attributes": {
+    "$eve.type": "turn",
+    "$eve.parent": "wrun_01KW58VJQRZMD9YZT9XKJYMFCM",
+    "$eve.root": "wrun_01KW58VJQRZMD9YZT9XKJYMFCM",
+    "$eve.model": "anthropic/claude-sonnet-4.6",
+    "$eve.input_tokens": "7175",
+    "$eve.output_tokens": "104",
+    "$eve.cache_read_tokens": "0",
+    "$eve.cache_write_tokens": "182",
+    "$eve.tool_count": "16"
+  }
+}

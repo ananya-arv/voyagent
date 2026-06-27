@@ -40,6 +40,7 @@ export async function insertTripWithEvents(
       start_date: intake.start_date,
       end_date: intake.end_date,
       num_travelers: intake.num_travelers,
+      age: intake.age,
       budget_tier: intake.budget_tier,
       vibe: intake.vibe,
       dietary_notes: intake.dietary_notes ?? null,
@@ -81,6 +82,13 @@ export async function insertTripWithEvents(
   }
 
   return tripId;
+}
+
+/** Delete a trip and (via ON DELETE CASCADE) all of its events. */
+export async function deleteTrip(tripId: string): Promise<void> {
+  const supabase = getServiceClient();
+  const { error } = await supabase.from("trips").delete().eq("id", tripId);
+  if (error) throw new Error(`Failed to delete trip: ${error.message}`);
 }
 
 export async function getUserById(

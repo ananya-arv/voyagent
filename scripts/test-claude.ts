@@ -16,6 +16,7 @@ const sample: TripIntake = {
   start_date: "2026-09-10",
   end_date: "2026-09-12",
   num_travelers: 2,
+  age: 30,
   budget_tier: "mid",
   vibe: "relaxed",
   dietary_notes: "one vegetarian",

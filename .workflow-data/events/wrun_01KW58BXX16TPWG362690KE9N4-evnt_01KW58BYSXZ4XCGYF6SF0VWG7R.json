@@ -1,0 +1,16 @@
+{
+  "eventType": "step_completed",
+  "specVersion": 5,
+  "correlationId": "step_01KW58BXX13WKA4ZT0XN358DHQ",
+  "eventData": {
+    "stepName": "step//eve@0.16.1//notifyDelegatedParentStep",
+    "workflowName": "workflow//eve//workflowEntry",
+    "result": {
+      "__type": "Uint8Array",
+      "data": "ZGV2bC0x"
+    }
+  },
+  "runId": "wrun_01KW58BXX16TPWG362690KE9N4",
+  "eventId": "evnt_01KW58BYSXZ4XCGYF6SF0VWG7R",
+  "createdAt": "2026-06-27T19:19:40.605Z"
+}

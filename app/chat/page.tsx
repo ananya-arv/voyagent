@@ -12,12 +12,18 @@ export default async function ChatPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-2xl px-4 py-10">
-        <h1 className="text-2xl font-bold tracking-tight">Plan by chat</h1>
-        <p className="mt-1 mb-6 text-sm text-muted-foreground">
-          Chat with Voyagent to build and save an itinerary. It&apos;ll save to
-          your trips when ready.
-        </p>
+      <main className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <div>
+            <p className="eyebrow">Plan by chat</p>
+            <h1 className="mt-2 font-heading text-3xl font-medium tracking-tight text-ink">
+              Talk it through
+            </h1>
+          </div>
+          <p className="hidden max-w-[16rem] text-right text-sm text-slate sm:block">
+            Voyagent saves the finished itinerary to your trips automatically.
+          </p>
+        </div>
         <Chat userId={user.sub} userEmail={user.email} />
       </main>
     </>

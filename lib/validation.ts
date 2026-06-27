@@ -7,6 +7,7 @@ export const tripIntakeSchema = z
     start_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "start_date must be YYYY-MM-DD"),
     end_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "end_date must be YYYY-MM-DD"),
     num_travelers: z.coerce.number().int().min(1).max(20),
+    age: z.coerce.number().int().min(1).max(120),
     budget_tier: z.enum(["budget", "mid", "luxury"]),
     vibe: z.enum(["relaxed", "packed", "adventurous"]),
     dietary_notes: z.string().max(1000).optional().nullable(),

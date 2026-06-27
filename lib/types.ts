@@ -15,6 +15,7 @@ export interface TripIntake {
   start_date: string; // YYYY-MM-DD
   end_date: string; // YYYY-MM-DD
   num_travelers: number;
+  age: number;
   budget_tier: BudgetTier;
   vibe: Vibe;
   dietary_notes?: string | null;

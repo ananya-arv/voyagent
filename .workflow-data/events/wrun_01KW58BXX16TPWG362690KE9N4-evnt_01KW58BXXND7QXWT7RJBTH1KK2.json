@@ -1,0 +1,28 @@
+{
+  "eventType": "run_created",
+  "runId": "wrun_01KW58BXX16TPWG362690KE9N4",
+  "eventId": "evnt_01KW58BXXND7QXWT7RJBTH1KK2",
+  "createdAt": "2026-06-27T19:19:39.691Z",
+  "specVersion": 5,
+  "eventData": {
+    "deploymentId": "dpl_local@bundled",
+    "workflowName": "workflow//eve//workflowEntry",
+    "input": {
+      "__type": "Uint8Array",
+      "data": "ZGV2bFtbMV0seyJpbnB1dCI6Miwic2VyaWFsaXplZENvbnRleHQiOjZ9LHsibWVzc2FnZSI6MywiY29udGV4dCI6NCwib3V0cHV0U2NoZW1hIjotMX0sImkgd2FubmEgcGxhbiBhIHRyaXAgdG8ga2VueWEgZm9yIDQgZGF5cyB3aXRoIDEgb3RoZXIgcGVyc29uIixbNV0sIkNsaWVudCBjb250ZXh0Olxue1widXNlcl9pZFwiOlwiYXV0aDB8NmE0MDBiODkyNTVhYjQyNGRlNGI0ZDU5XCIsXCJ1c2VyX2VtYWlsXCI6XCJhbm55YXJ2aUBnbWFpbC5jb21cIn0iLHsiZXZlLmJ1bmRsZSI6NywiZXZlLmNoYW5uZWwiOjEzLCJldmUuY2hhbm5lbEluc3RydW1lbnRhdGlvbiI6MTYsImV2ZS5jb250aW51YXRpb25Ub2tlbiI6MTksImV2ZS5tb2RlIjoyMCwiZXZlLmF1dGgiOjIxLCJldmUuaW5pdGlhdG9yQXV0aCI6MjEsImV2ZS5jYXBhYmlsaXRpZXMiOjI0fSx7Im5vZGVJZCI6LTEsInNvdXJjZSI6OH0seyJhcHBSb290Ijo5LCJraW5kIjoxMCwibW9kdWxlTWFwTG9hZGVyUGF0aCI6MTEsInNhbmRib3hBcHBSb290IjoxMn0sIi9Vc2Vycy9BTkFOWS92b3lhZ2VudC8uZXZlL2Rldi1ydW50aW1lL3NuYXBzaG90cy9tcXdxcmx3My03NjA3NTczOS1kMWRiLTQyNjctODc4Yy1iNjc2ZmQxYTRlNzQvc291cmNlIiwiZGlzayIsIi9Vc2Vycy9BTkFOWS92b3lhZ2VudC9ub2RlX21vZHVsZXMvZXZlL2Rpc3Qvc3JjL2ludGVybmFsL2F1dGhvcmVkLW1vZHVsZS1tYXAtbG9hZGVyLmpzIiwiL1VzZXJzL0FOQU5ZL3ZveWFnZW50Iix7ImtpbmQiOjE0LCJzdGF0ZSI6MTV9LCJodHRwIix7fSx7ImtpbmQiOjE3LCJtZXRhZGF0YSI6MTh9LCJjaGFubmVsOmV2ZSIse30sImV2ZTpldmU6YjE0MjEzODItYWZkMS00YTgxLTgwNmMtNmZlNjljMDA1N2RjIiwiY29udmVyc2F0aW9uIix7ImF0dHJpYnV0ZXMiOjIyLCJhdXRoZW50aWNhdG9yIjoyMywicHJpbmNpcGFsSWQiOjIzLCJwcmluY2lwYWxUeXBlIjoyM30se30sImxvY2FsLWRldiIseyJyZXF1ZXN0SW5wdXQiOjI1fSx0cnVlXQ=="
+    },
+    "executionContext": {
+      "traceCarrier": {},
+      "workflowCoreVersion": "5.0.0-beta.24",
+      "features": {
+        "encryption": false
+      }
+    },
+    "attributes": {
+      "$eve.type": "session",
+      "$eve.trigger": "http",
+      "$eve.title": "i wanna plan a trip to kenya for 4 days with 1 other person"
+    },
+    "allowReservedAttributes": true
+  }
+}
