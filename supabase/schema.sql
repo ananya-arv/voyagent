@@ -8,7 +8,7 @@ create extension if not exists "pgcrypto";
 -- id is the Auth0 `sub` (a text identifier, e.g. "auth0|abc123"),
 -- stored as the primary key.
 create table if not exists public.users (
-  id          text primairy key,
+  id          text primary key,
   email       text not null,
   created_at  timestamptz not null default now()
 );
@@ -18,10 +18,12 @@ create table if not exists public.trips (
   id             uuid primary key default gen_random_uuid(),
   user_id        text not null references public.users (id) on delete cascade,
   destination    text not null,
+  origin         text not null default '',
   start_date     date not null,
   end_date       date not null,
   num_travelers  integer not null default 1,
-  age            integer,
+  group_type     text not null default 'solo' check (group_type in ('solo', 'couple', 'family', 'friends')),
+  departure_time text not null default 'either' check (departure_time in ('morning', 'night', 'either')),
   budget_tier    text not null check (budget_tier in ('budget', 'mid', 'luxury')),
   vibe           text not null check (vibe in ('relaxed', 'packed', 'adventurous')),
   dietary_notes  text,

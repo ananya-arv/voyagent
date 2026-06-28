@@ -37,10 +37,12 @@ export async function insertTripWithEvents(
     .insert({
       user_id: userId,
       destination: intake.destination,
+      origin: intake.origin,
       start_date: intake.start_date,
       end_date: intake.end_date,
       num_travelers: intake.num_travelers,
-      age: intake.age,
+      group_type: intake.group_type,
+      departure_time: intake.departure_time,
       budget_tier: intake.budget_tier,
       vibe: intake.vibe,
       dietary_notes: intake.dietary_notes ?? null,

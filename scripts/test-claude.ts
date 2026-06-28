@@ -13,10 +13,12 @@ import type { TripIntake } from "@/lib/types";
 
 const sample: TripIntake = {
   destination: "Lisbon, Portugal",
+  origin: "San Francisco (SFO)",
   start_date: "2026-09-10",
   end_date: "2026-09-12",
   num_travelers: 2,
-  age: 30,
+  group_type: "couple",
+  departure_time: "morning",
   budget_tier: "mid",
   vibe: "relaxed",
   dietary_notes: "one vegetarian",

@@ -40,6 +40,7 @@ export default async function TripPage({
                   {formatDate(trip.start_date)} – {formatDate(trip.end_date)} ·{" "}
                   {trip.num_travelers} traveler
                   {trip.num_travelers === 1 ? "" : "s"} ·{" "}
+                  <span className="capitalize">{trip.group_type}</span> ·{" "}
                   <span className="capitalize">{trip.budget_tier}</span> ·{" "}
                   <span className="capitalize">{trip.vibe}</span>
                 </p>

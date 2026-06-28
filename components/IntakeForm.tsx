@@ -20,7 +20,53 @@ const VIBE_OPTIONS = [
   { value: "adventurous", label: "Adventurous" },
 ] as const;
 
+const GROUP_OPTIONS = [
+  { value: "solo", label: "Solo" },
+  { value: "couple", label: "Couple" },
+  { value: "family", label: "Family / kids" },
+  { value: "friends", label: "Friends" },
+] as const;
+
+const DEPARTURE_OPTIONS = [
+  { value: "morning", label: "Morning" },
+  { value: "night", label: "Night" },
+  { value: "either", label: "Either" },
+] as const;
+
 const FIELD = "h-11 text-base";
+
+function Segmented<T extends string>({
+  options,
+  value,
+  onChange,
+}: {
+  options: readonly { value: T; label: string }[];
+  value: T;
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((o) => {
+        const active = o.value === value;
+        return (
+          <button
+            key={o.value}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onChange(o.value)}
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+              active
+                ? "border-brand bg-brand-wash text-brand-deep"
+                : "border-line bg-card text-slate hover:border-brand/40"
+            }`}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 function Section({
   n,
@@ -52,6 +98,10 @@ export function IntakeForm() {
   const [error, setError] = useState<string | null>(null);
   const [budgetIdx, setBudgetIdx] = useState(1); // mid
   const [vibeIdx, setVibeIdx] = useState(0); // relaxed
+  const [groupType, setGroupType] =
+    useState<(typeof GROUP_OPTIONS)[number]["value"]>("couple");
+  const [departureTime, setDepartureTime] =
+    useState<(typeof DEPARTURE_OPTIONS)[number]["value"]>("either");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -61,10 +111,12 @@ export function IntakeForm() {
     const fd = new FormData(e.currentTarget);
     const payload = {
       destination: String(fd.get("destination") ?? ""),
+      origin: String(fd.get("origin") ?? ""),
       start_date: String(fd.get("start_date") ?? ""),
       end_date: String(fd.get("end_date") ?? ""),
       num_travelers: Number(fd.get("num_travelers") ?? 1),
-      age: Number(fd.get("age") ?? 30),
+      group_type: groupType,
+      departure_time: departureTime,
       budget_tier: BUDGET_OPTIONS[budgetIdx].value,
       vibe: VIBE_OPTIONS[vibeIdx].value,
       dietary_notes: String(fd.get("dietary_notes") ?? ""),
@@ -93,15 +145,27 @@ export function IntakeForm() {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-9">
       <Section n="01" title="Where & when">
-        <div className="grid gap-2">
-          <Label htmlFor="destination">Destination</Label>
-          <Input
-            id="destination"
-            name="destination"
-            placeholder="e.g. Lisbon, Portugal"
-            className={FIELD}
-            required
-          />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor="origin">Flying from</Label>
+            <Input
+              id="origin"
+              name="origin"
+              placeholder="e.g. San Francisco (SFO)"
+              className={FIELD}
+              required
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="destination">Destination</Label>
+            <Input
+              id="destination"
+              name="destination"
+              placeholder="e.g. Lisbon, Portugal"
+              className={FIELD}
+              required
+            />
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="grid gap-2">
@@ -113,36 +177,39 @@ export function IntakeForm() {
             <Input id="end_date" name="end_date" type="date" className={FIELD} required />
           </div>
         </div>
+        <div className="grid gap-2">
+          <Label>Departure time</Label>
+          <Segmented
+            options={DEPARTURE_OPTIONS}
+            value={departureTime}
+            onChange={setDepartureTime}
+          />
+          <p className="text-xs text-slate">
+            Leave in the morning or at night? We&apos;ll surface flights to match.
+          </p>
+        </div>
       </Section>
 
       <Section n="02" title="Who's going">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="num_travelers">Travelers</Label>
-            <Input
-              id="num_travelers"
-              name="num_travelers"
-              type="number"
-              min={1}
-              max={20}
-              defaultValue={2}
-              className={FIELD}
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="age">Age</Label>
-            <Input
-              id="age"
-              name="age"
-              type="number"
-              min={1}
-              max={120}
-              defaultValue={30}
-              className={FIELD}
-              required
-            />
-          </div>
+        <div className="grid gap-2">
+          <Label htmlFor="num_travelers">Travelers</Label>
+          <Input
+            id="num_travelers"
+            name="num_travelers"
+            type="number"
+            min={1}
+            max={20}
+            defaultValue={2}
+            className={FIELD}
+            required
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label>Who&apos;s the trip for</Label>
+          <Segmented options={GROUP_OPTIONS} value={groupType} onChange={setGroupType} />
+          <p className="text-xs text-slate">
+            Tunes the activities — kid-friendly for family, nightlife for friends, and so on.
+          </p>
         </div>
       </Section>
 

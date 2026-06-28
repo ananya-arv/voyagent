@@ -3,6 +3,13 @@
 
 export type BudgetTier = "budget" | "mid" | "luxury";
 export type Vibe = "relaxed" | "packed" | "adventurous";
+// Who's travelling together — drives how activities are tuned (e.g. kid-friendly
+// for "family", nightlife for "friends", romantic for "couple"). Replaces the
+// old free-form `age` field.
+export type GroupType = "solo" | "couple" | "family" | "friends";
+// Preferred time of day to fly out — used to pick flights and schedule the
+// flight event.
+export type DepartureTime = "morning" | "night" | "either";
 export type EventCategory =
   | "flight"
   | "hotel"
@@ -12,10 +19,12 @@ export type EventCategory =
 
 export interface TripIntake {
   destination: string;
+  origin: string; // departure city/airport, e.g. "San Francisco (SFO)"
   start_date: string; // YYYY-MM-DD
   end_date: string; // YYYY-MM-DD
   num_travelers: number;
-  age: number;
+  group_type: GroupType;
+  departure_time: DepartureTime;
   budget_tier: BudgetTier;
   vibe: Vibe;
   dietary_notes?: string | null;
